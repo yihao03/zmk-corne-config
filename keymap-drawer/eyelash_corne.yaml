@@ -35,7 +35,7 @@ layers:
   - C
   - V
   - B
-  - $$mdi:volume-off$$
+  - $$mdi:play-pause$$
   - $$mdi:arrow-down-bold$$
   - N
   - M
