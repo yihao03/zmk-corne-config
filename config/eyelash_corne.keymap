@@ -38,7 +38,7 @@
           compatible = "zmk,behavior-hold-tap";
           #binding-cells = <2>;
           flavor = "balanced";
-          require-prior-idle-ms = <200>;
+          require-prior-idle-ms = <280>;
           tapping-term-ms = <200>;
           quick-tap-ms = <250>;
           bindings = <&kp>, <&kp>;
@@ -51,7 +51,7 @@
           compatible = "zmk,behavior-hold-tap";
           #binding-cells = <2>;
           flavor = "balanced";
-          require-prior-idle-ms = <200>;
+          require-prior-idle-ms = <280>;
           tapping-term-ms = <200>;
           quick-tap-ms = <250>;
           bindings = <&kp>, <&kp>;
@@ -91,7 +91,7 @@
             bindings = <
 &kp TAB    &kp Q        &kp W        &kp E            &kp R         &kp T                               &kp UP                &kp Y        &kp U         &kp I             &kp O          &kp P           &kp BSPC
 &kp ESC    &hml LGUI A  &hml LALT S  &hml LCTRL D     &hml LSHFT F  &kp G                     &kp LEFT  &kp ENTER  &kp RIGHT  &kp H        &hmr RSHFT J  &hmr RCTRL K      &hmr RALT L    &hmr RGUI SEMI  &kp SQT
-&kp LSHFT  &kp Z        &kp X        &kp C            &kp V         &kp B        &kp C_PP               &kp DOWN              &kp N        &kp M         &kp COMMA         &kp DOT        &kp FSLH        &kp ESC
+&kp LSHFT  &kp Z        &kp X        &kp C            &kp V         &kp B        &kp C_MUTE             &kp DOWN              &kp N        &kp M         &kp COMMA         &kp DOT        &kp FSLH        &kp ESC
                                      &kp LGUI         &mo 1         &lt 3 ENTER                                               &lt 3 SPACE  &mo 2  &kp F24
             >;
 
