@@ -46,8 +46,8 @@ layers:
   - {t: LGUI, h: '$$mdi:apple-keyboard-option$$'}
   - SYMBOL
   - {t: '$$mdi:keyboard-return$$', h: NUMBER}
-  - {t: '$$mdi:keyboard-space$$', h: NUMBER}
-  - SYMBOL
+  - $$mdi:keyboard-space$$
+  - {t: SYMBOL, h: NUMBER}
   - {t: F24, h: Fn}
   NUMBER:
   - {t: '$$mdi:transfer$$', type: trans}
@@ -95,8 +95,8 @@ layers:
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - {type: held}
-  - {t: INS, type: held alternate}
-  - $$mdi:backspace-reverse-outline$$
+  - INS
+  - {t: '$$mdi:backspace-reverse-outline$$', type: held alternate}
   - {t: '$$mdi:transfer$$', type: trans}
   SYMBOL:
   - {t: '$$mdi:transfer$$', type: trans}
