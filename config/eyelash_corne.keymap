@@ -32,7 +32,7 @@
           compatible = "zmk,behavior-hold-tap";
           #binding-cells = <2>;
           flavor = "balanced";
-          require-prior-idle-ms = <280>;
+          require-prior-idle-ms = <220>;
           tapping-term-ms = <200>;
           quick-tap-ms = <250>;
           bindings = <&kp>, <&kp>;
@@ -45,7 +45,7 @@
           compatible = "zmk,behavior-hold-tap";
           #binding-cells = <2>;
           flavor = "balanced";
-          require-prior-idle-ms = <280>;
+          require-prior-idle-ms = <220>;
           tapping-term-ms = <200>;
           quick-tap-ms = <250>;
           bindings = <&kp>, <&kp>;
@@ -54,6 +54,7 @@
                                         28 29 30 31 32 33>; // List of keys on the left side of the keyboard
           hold-trigger-on-release;
         };
+
     };
 
     rgb_encoder: rgb_encoder {
