@@ -32,7 +32,7 @@
           compatible = "zmk,behavior-hold-tap";
           #binding-cells = <2>;
           flavor = "balanced";
-          require-prior-idle-ms = <180>;
+          require-prior-idle-ms = <280>;
           tapping-term-ms = <200>;
           quick-tap-ms = <250>;
           bindings = <&kp>, <&kp>;
@@ -45,7 +45,7 @@
           compatible = "zmk,behavior-hold-tap";
           #binding-cells = <2>;
           flavor = "balanced";
-          require-prior-idle-ms = <180>;
+          require-prior-idle-ms = <280>;
           tapping-term-ms = <200>;
           quick-tap-ms = <250>;
           bindings = <&kp>, <&kp>;
