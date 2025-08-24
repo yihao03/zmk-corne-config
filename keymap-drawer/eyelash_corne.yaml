@@ -44,7 +44,7 @@ layers:
   - {t: /, s: '?'}
   - $$mdi:backspace-reverse-outline$$
   - {t: LGUI, h: '$$mdi:apple-keyboard-option$$'}
-  - SYMBOL
+  - {t: Fn, h: SYMBOL}
   - {t: '$$mdi:keyboard-return$$', h: NUMBER}
   - $$mdi:keyboard-space$$
   - {t: SYMBOL, h: NUMBER}
@@ -191,11 +191,11 @@ layers:
   - SCROLLLOCK
   - PAUSE BREAK
   - {t: '$$mdi:transfer$$', type: trans}
-  - {t: '$$mdi:transfer$$', type: trans}
-  - {t: '$$mdi:transfer$$', type: trans}
-  - {t: '$$mdi:transfer$$', type: trans}
-  - {t: '$$mdi:transfer$$', type: trans}
   - {type: held}
+  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '$$mdi:transfer$$', type: trans}
+  - {type: held alternate}
   GAME:
   - $$mdi:keyboard-tab$$
   - Q
@@ -240,7 +240,7 @@ layers:
   - {t: /, s: '?'}
   - $$mdi:backspace-reverse-outline$$
   - $$mdi:apple-keyboard-caps$$
-  - {t: Fn, h: toggle}
+  - {t: GAME, h: toggle}
   - $$mdi:keyboard-space$$
   - $$mdi:keyboard-space$$
   - {t: SYMBOL, h: NUMBER}
