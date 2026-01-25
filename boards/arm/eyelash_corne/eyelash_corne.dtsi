@@ -42,13 +42,13 @@
         a-gpios = <&gpio1 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         b-gpios = <&gpio1 14 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         resolution = <4>;
-        steps = <60>;
+        steps = <8>;
         status = "okay";
     };
 
     sensors {
         compatible = "zmk,keymap-sensors";
-        triggers-per-rotation = <60>;
+        triggers-per-rotation = <8>;
         sensors = <&left_encoder>;
     };
 
