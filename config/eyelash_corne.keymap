@@ -28,6 +28,10 @@
 
 &soft_off { hold-time-ms = <2000>; };
 
+&sensors {
+    triggers-per-rotation = <60>;  // Increase for more granular volume control
+};
+
 / {
     behaviors {
         hml: home_row_mod_left {
