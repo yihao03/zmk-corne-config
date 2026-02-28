@@ -28,6 +28,17 @@
 
 &soft_off { hold-time-ms = <2000>; };
 
+// Macro: Shift+Fn+<key> toggles a layer, plain Fn+<key> sends the F-key
+// Usage: SHIFT_TOG(name, fkey, layer_num)
+//   Creates a mod-morph node &name that sends fkey normally, tog layer_num with Shift
+#define SHIFT_TOG(NAME, FKEY, LAYER) \
+    NAME: NAME { \
+        compatible = "zmk,behavior-mod-morph"; \
+        #binding-cells = <0>; \
+        bindings = <&kp FKEY>, <&tog LAYER>; \
+        mods = <(MOD_LSFT|MOD_RSFT)>; \
+    };
+
 / {
     behaviors {
         hml: home_row_mod_left {
@@ -63,6 +74,11 @@
             tapping-term-ms = <200>;
             bindings = <&mo>, <&sl>;
         };
+
+        // Fn+F4 = F4, Shift+Fn+F4 = toggle GAME layer
+        SHIFT_TOG(st_game, F4, 4)
+        // Fn+F5 = F5, Shift+Fn+F5 = toggle DAVINCI layer
+        SHIFT_TOG(st_davinci, F5, 5)
     };
 
     rgb_encoder: rgb_encoder {
@@ -77,6 +93,14 @@
         bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
 
         tap-ms = <100>;
+    };
+
+    arrow_encoder: arrow_encoder {
+        compatible = "zmk,behavior-sensor-rotate";
+        #sensor-binding-cells = <0>;
+        bindings = <&msc LEFT>, <&msc RIGHT>;
+
+        tap-ms = <50>;
     };
 
     combos {
@@ -130,7 +154,7 @@
         layer_3 {
             display-name = "Fn";
             bindings = <
-&studio_unlock  &kp F1         &kp F2         &kp F3         &kp F4        &kp F5                                      &mmv MOVE_UP                     &kp F6       &kp F7     &kp F8       &kp F9      &kp F10          &kp F11
+&studio_unlock  &kp F1         &kp F2         &kp F3         &st_game      &st_davinci                                      &mmv MOVE_UP                     &kp F6       &kp F7     &kp F8       &kp F9      &kp F10          &kp F11
 &trans          &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &bt BT_SEL 3  &bt BT_SEL 4                &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT  &bootloader  &mkp LCLK  &mkp MCLK    &mkp RCLK   &kp PRINTSCREEN  &kp F12
 &trans          &sys_reset     &trans         &bootloader    &trans        &mkp MB5  &trans                            &mmv MOVE_DOWN                   &trans       &trans     &bootloader  &sys_reset  &kp SCROLLLOCK   &kp PAUSE_BREAK
                                               &trans         &trans        &trans                                                                       &trans       &trans     &trans
@@ -140,8 +164,7 @@
         };
 
         layer_4 {
-            display-name = "GAME";
-            bindings = <
+            display-name = "GAME"; bindings = <
 &kp TAB     &kp Q   &kp W   &kp E           &kp R    &kp T                               &kp UP                &kp Y        &kp U   &kp I       &kp O     &kp P      &kp BSPC
 &kp LSHFT   &kp A   &kp S   &kp D           &kp F    &kp G                     &kp LEFT  &kp ENTER  &kp RIGHT  &kp H        &kp J   &kp K       &kp L     &kp SEMI   &kp SQT
 &kp LCTRL   &kp Z   &kp X   &kp C           &kp V    &kp B        &kp C_MUTE             &kp DOWN              &kp N        &kp M   &kp COMMA   &kp DOT   &kp FSLH   &kp DEL
@@ -149,6 +172,17 @@
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
+        };
+
+        layer_5 {
+            display-name = "DAVINCI";
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans                                    &kp LS(L)                 &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                          &kp J     &kp K      &kp L          &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans       &kp LC(B)                    &kp LS(J)                 &trans  &trans  &trans  &trans  &trans  &trans
+                                &trans  &trans  &trans                                                      &trans  &trans  &trans
+            >;
+            sensor-bindings = <&arrow_encoder>;
         };
     };
 };
