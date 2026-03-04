@@ -1,0 +1,16 @@
+/ {
+    keymap {
+        compatible = "zmk,keymap";
+
+        layer_5 {
+            display-name = "DAVINCI";
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans                                    &kp LS(L)                 &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                          &kp J     &kp K      &kp L          &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans       &kp LC(B)                    &kp LS(J)                 &trans  &trans  &trans  &trans  &trans  &trans
+                                &trans  &trans  &trans                                                      &trans  &trans  &trans
+            >;
+            sensor-bindings = <&inc_dec_kp RIGHT LEFT>;
+        };
+    };
+};

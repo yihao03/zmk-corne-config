@@ -1,0 +1,16 @@
+/ {
+    keymap {
+        compatible = "zmk,keymap";
+
+        layer_4 {
+            display-name = "GAME";
+            bindings = <
+&trans      &trans  &trans  &trans     &trans   &trans                              &kp UP                &trans   &trans   &trans   &trans   &trans     &trans
+&kp LSHFT   &kp A   &kp S   &kp D      &kp F    &kp G                     &kp LEFT  &kp ENTER  &kp RIGHT  &kp H    &kp J    &kp K    &kp L    &kp SEMI   &kp SQT
+&trans      &trans  &trans  &trans     &trans   &trans       &kp C_MUTE             &kp DOWN              &trans   &trans   &trans   &trans   &trans     &trans
+                            &kp CAPS   &tog 4   &kp SPACE                                                 &trans   &trans   &trans
+            >;
+            sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
+        };
+    };
+};

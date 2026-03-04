@@ -15,9 +15,9 @@
 &msc_input_listener { input-processors = <&zip_scroll_scaler 2 1>; };
 
 &msc {
-    acceleration-exponent = <1>;      // 0
-    time-to-max-speed-ms = <100>;       // 300
-    delay-ms = <0>;                   // 0
+    acceleration-exponent = <1>;
+    time-to-max-speed-ms = <100>;
+    delay-ms = <0>;
 };
 
 &mmv {
@@ -28,9 +28,6 @@
 
 &soft_off { hold-time-ms = <2000>; };
 
-// Macro: Shift+Fn+<key> toggles a layer, plain Fn+<key> sends the F-key
-// Usage: SHIFT_TOG(name, fkey, layer_num)
-//   Creates a mod-morph node &name that sends fkey normally, tog layer_num with Shift
 #define SHIFT_TOG(NAME, FKEY, LAYER) \
     NAME: NAME { \
         compatible = "zmk,behavior-mod-morph"; \
@@ -39,142 +36,21 @@
         mods = <(MOD_LSFT|MOD_RSFT)>; \
     };
 
+// behaviors and combos
+#include "layers/default.dtsi"   // hml, hmr, ld + default_layer
+#include "layers/lower.dtsi"     // lower_layer (no extra behaviors)
+#include "layers/raise.dtsi"     // scroll_encoder + raise_layer
+#include "layers/fn.dtsi"        // st_game, st_davinci + layer_3
+#include "layers/game.dtsi"      // layer_4 (no extra behaviors)
+#include "layers/davinci.dtsi"   // layer_5 (no extra behaviors)
+
 / {
-    behaviors {
-        hml: home_row_mod_left {
-          compatible = "zmk,behavior-hold-tap";
-          #binding-cells = <2>;
-          flavor = "balanced";
-          require-prior-idle-ms = <150>;
-          tapping-term-ms = <150>;
-          quick-tap-ms = <250>;
-          bindings = <&kp>, <&kp>;
-          hold-trigger-key-positions = <7 8 9 10 11 12
-                                        22 23 24 25 26 27
-                                        36 37 38 39 40 41>; // List of keys on the right side of the keyboard
-          hold-trigger-on-release;
-        };
-        hmr: home_row_mod_right {
-          compatible = "zmk,behavior-hold-tap";
-          #binding-cells = <2>;
-          flavor = "balanced";
-          require-prior-idle-ms = <150>;
-          tapping-term-ms = <150>;
-          quick-tap-ms = <250>;
-          bindings = <&kp>, <&kp>;
-          hold-trigger-key-positions = <0 1 2 3 4 5
-                                        13 14 15 16 17 18
-                                        28 29 30 31 32 33>; // List of keys on the left side of the keyboard
-          hold-trigger-on-release;
-        };
-
-        ld: layer_dance {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            bindings = <&mo>, <&sl>;
-        };
-
-        // Fn+F4 = F4, Shift+Fn+F4 = toggle GAME layer
-        SHIFT_TOG(st_game, F4, 4)
-        // Fn+F5 = F5, Shift+Fn+F5 = toggle DAVINCI layer
-        SHIFT_TOG(st_davinci, F5, 5)
-    };
-
-    rgb_encoder: rgb_encoder {
-        compatible = "zmk,behavior-sensor-rotate";
-        #sensor-binding-cells = <0>;
-        bindings = <&rgb_ug RGB_BRI>, <&rgb_ug RGB_BRD>;
-    };
-
-    scroll_encoder: scroll_encoder {
-        compatible = "zmk,behavior-sensor-rotate";
-        #sensor-binding-cells = <0>;
-        bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
-
-        tap-ms = <100>;
-    };
-
     combos {
         compatible = "zmk,combos";
 
         softoff {
             bindings = <&soft_off>;
             key-positions = <1 15 29>;
-        };
-    };
-
-    keymap {
-        compatible = "zmk,keymap";
-
-        default_layer {
-            display-name = "QWERTY";
-            bindings = <
-&kp TAB         &kp Q        &kp W        &kp E            &kp R         &kp T                               &kp UP                &kp Y        &kp U         &kp I         &kp O        &kp P           &kp BSPC
-&mt ESC CAPS    &hml LGUI A  &hml LALT S  &hml LCTRL D     &hml LSHFT F  &kp G                     &kp LEFT  &kp ENTER  &kp RIGHT  &kp H        &hmr RSHFT J  &hmr RCTRL K  &hmr RALT L  &hmr RGUI SEMI  &kp SQT
-&kp LSHFT       &kp Z        &kp X        &kp C            &kp V         &kp B        &kp C_MUTE             &kp DOWN              &kp N        &kp M         &kp COMMA     &kp DOT      &kp FSLH        &kp DEL
-                                          &mt LALT LGUI    &ld 2 3       &lt 1 ENTER                                               &kp SPACE    &ld 1 2       &lt 3 F24
-            >;
-
-            sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
-        };
-
-        lower_layer {
-            display-name = "NUMBER";
-            bindings = <
-&trans  &kp N1           &kp N2          &kp N3        &kp N4        &kp N5                                         &mmv MOVE_UP                     &kp N6           &kp N7           &kp N8   &kp N9      &kp N0    &kp BSPC
-&trans  &trans           &trans          &trans        &trans        &trans                         &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT  &kp LEFT         &kp DOWN         &kp UP   &kp RIGHT   &kp HOME  &kp PG_UP
-&trans  &rgb_ug RGB_OFF  &rgb_ug RGB_ON  &trans        &trans        &rgb_ug RGB_EFF  &kp C_PP                      &mmv MOVE_DOWN                   &rgb_ug RGB_EFR  &rgb_ug RGB_SPI  &trans   &trans      &kp END   &kp PG_DN
-                                         &trans        &trans        &trans                                                                          &trans           &trans           &trans
-            >;
-
-            sensor-bindings = <&inc_dec_kp C_BRI_INC C_BRI_DEC>;
-        };
-
-        raise_layer {
-            display-name = "SYMBOL";
-            bindings = <
-&trans  &kp EXCL      &kp AT        &kp HASH   &kp DLLR   &kp PRCNT                            &mmv MOVE_UP                     &kp CARET  &kp AMPS   &kp ASTRK  &kp LPAR  &kp RPAR  &kp BSPC
-&trans  &trans        &mkp LCLK     &mkp MCLK  &mkp RCLK  &mkp MB4             &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT  &kp MINUS  &kp EQUAL  &kp LBKT   &kp RBKT  &kp BSLH  &kp GRAVE
-&trans  &out OUT_USB  &out OUT_BLE  &none      &none      &mkp MB5   &tog 4                    &mmv MOVE_DOWN                   &kp UNDER  &kp PLUS   &kp LBRC   &kp RBRC  &kp PIPE  &kp TILDE
-                                    &trans     &trans     &kp RETURN                                                            &trans     &trans     &trans
-            >;
-
-            sensor-bindings = <&scroll_encoder>;
-        };
-
-        layer_3 {
-            display-name = "Fn";
-            bindings = <
-&studio_unlock  &kp F1         &kp F2         &kp F3         &st_game      &st_davinci                                      &mmv MOVE_UP                     &kp F6       &kp F7     &kp F8       &kp F9      &kp F10          &kp F11
-&trans          &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &bt BT_SEL 3  &bt BT_SEL 4                &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT  &bootloader  &mkp LCLK  &mkp MCLK    &mkp RCLK   &kp PRINTSCREEN  &kp F12
-&trans          &sys_reset     &trans         &bootloader    &trans        &mkp MB5  &trans                            &mmv MOVE_DOWN                   &trans       &trans     &bootloader  &sys_reset  &kp SCROLLLOCK   &kp PAUSE_BREAK
-                                              &trans         &trans        &trans                                                                       &trans       &trans     &trans
-            >;
-
-            sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
-        };
-
-        layer_4 {
-            display-name = "GAME"; bindings = <
-&trans      &trans  &trans  &trans     &trans   &trans                              &kp UP                &trans   &trans   &trans   &trans   &trans     &trans
-&kp LSHFT   &kp A   &kp S   &kp D      &kp F    &kp G                     &kp LEFT  &kp ENTER  &kp RIGHT  &kp H    &kp J    &kp K    &kp L    &kp SEMI   &kp SQT
-&trans      &trans  &trans  &trans     &trans   &trans       &kp C_MUTE             &kp DOWN              &trans   &trans   &trans   &trans   &trans     &trans
-                            &kp CAPS   &tog 4   &kp SPACE                                                 &trans   &trans   &trans
-            >;
-
-            sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
-        };
-
-        layer_5 {
-            display-name = "DAVINCI";
-            bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans                                    &kp LS(L)                 &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                          &kp J     &kp K      &kp L          &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans       &kp LC(B)                    &kp LS(J)                 &trans  &trans  &trans  &trans  &trans  &trans
-                                &trans  &trans  &trans                                                      &trans  &trans  &trans
-            >;
-            sensor-bindings = <&inc_dec_kp RIGHT LEFT>;
         };
     };
 };
