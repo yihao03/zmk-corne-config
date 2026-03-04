@@ -248,6 +248,14 @@ parse_config:
       shifted: $$mdi:bluetooth-connect$$
       tap: ""
       hold: $$mdi:arrow-down-bold$$
+    # Layer toggles (mod-morph: tap = Fkey, shift = toggle layer)
+    "&st_game":
+      tap: F4
+      shifted: GAME
+    "&st_davinci":
+      tap: F5
+      shifted: DAVINCI
+
     # Reset
     "&sys_reset":
       type: bootloader
