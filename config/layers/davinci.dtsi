@@ -1,12 +1,8 @@
 / {
     behaviors {
-      skp: shift_key_press {
-        compatible = "zmk,behavior-mod-morph";
-        #binding-cells = <2>;
-        bindings = <&kp>, <&kp>;
-        mods = <(MOD_LSFT|MOD_RSFT)>;
+        SHIFT_KEY(skp_up, UP, RBKT)
+        SHIFT_KEY(skp_down, DOWN, LBKT)
     };
-  };
 };
 
 / {
@@ -16,9 +12,9 @@
         layer_5 {
             display-name = "DAVINCI";
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans                                         &skp UP RBKT              &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                                         &skp_up                   &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans                          &kp LS(UP)     &kp K      &kp LS(DOWN)   &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans       &kp LC(B)                         &skp DOWN LBKT            &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans       &kp LC(B)                         &skp_down                 &trans  &trans  &trans  &trans  &trans  &trans
                                 &trans  &trans  &trans                                                           &trans  &trans  &trans
             >;
             sensor-bindings = <&inc_dec_kp RIGHT LEFT>;

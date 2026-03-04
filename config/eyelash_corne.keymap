@@ -36,6 +36,14 @@
         mods = <(MOD_LSFT|MOD_RSFT)>; \
     };
 
+#define SHIFT_KEY(NAME, TAP, SHIFT) \
+    NAME: NAME { \
+        compatible = "zmk,behavior-mod-morph"; \
+        #binding-cells = <0>; \
+        bindings = <&kp TAP>, <&kp SHIFT>; \
+        mods = <(MOD_LSFT|MOD_RSFT)>; \
+    };
+
 // behaviors and combos
 #include "layers/default.dtsi"   // hml, hmr, ld + default_layer
 #include "layers/lower.dtsi"     // lower_layer (no extra behaviors)
