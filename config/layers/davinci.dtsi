@@ -6,6 +6,7 @@
         bindings = <&kp>, <&kp>;
         mods = <(MOD_LSFT|MOD_RSFT)>;
     };
+  };
 };
 
 / {
