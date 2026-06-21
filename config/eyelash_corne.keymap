@@ -165,7 +165,7 @@
 &kp LSHFT   &kp Z        &kp X        &kp C            &kp V         &kp B        &kp C_MUTE             &kp DOWN              &kp N        &kp M         &kp COMMA     &kp DOT      &kp FSLH        &kp DEL
                                        &lt 3 LGUI       &lt 2 CAPS    &lt 1 ENTER                                               &kp SPACE    &ld 1 2       &lt 3 LG(LS(F23))
             >;
-            sensor-bindings = <&rsr_vol &scroll_encoder>;
+            sensor-bindings = <&rsr_vol>;
         };
 
         lower_layer {
@@ -176,7 +176,7 @@
 &trans  &rgb_ug RGB_OFF  &rgb_ug RGB_ON  &trans        &trans        &rgb_ug RGB_EFF  &kp C_PP                      &mmv MOVE_DOWN                   &rgb_ug RGB_EFR  &rgb_ug RGB_SPI  &trans   &trans      &kp END   &kp PG_DN
                                           &trans        &trans        &trans                                                                          &trans           &trans           &trans
             >;
-            sensor-bindings = <&rsr_bri &scroll_encoder>;
+            sensor-bindings = <&rsr_bri>;
         };
 
         raise_layer {
@@ -187,7 +187,7 @@
 &trans  &out OUT_USB  &out OUT_BLE  &none      &none      &mkp MB5   &tog 4                    &mmv MOVE_DOWN                   &kp UNDER  &kp PLUS   &kp LBRC   &kp RBRC  &kp PIPE  &kp TILDE
                                      &trans     &trans     &kp RETURN                                                            &trans     &trans     &trans
             >;
-            sensor-bindings = <&scroll_encoder &rsr_vol>;
+            sensor-bindings = <&scroll_encoder>;
         };
 
         layer_3 {
@@ -198,7 +198,7 @@
 &bt BT_CLR      &sys_reset     &trans         &bootloader    &trans        &mkp MB5  &trans                            &mmv MOVE_DOWN                   &trans       &trans     &bootloader  &sys_reset  &kp SCROLLLOCK   &kp PAUSE_BREAK
                                                &trans         &trans        &trans                                                                       &trans       &trans     &trans
             >;
-            sensor-bindings = <&rsr_vol &scroll_encoder>;
+            sensor-bindings = <&scroll_encoder>;
         };
 
         layer_4 {
@@ -209,7 +209,7 @@
 &trans      &trans  &trans  &trans     &trans   &trans       &kp C_MUTE             &kp DOWN              &trans   &trans   &trans   &trans   &trans     &trans
                              &kp CAPS   &tog 4   &kp SPACE                                                 &trans   &trans   &trans
             >;
-            sensor-bindings = <&rsr_vol &scroll_encoder>;
+            sensor-bindings = <&rsr_vol>;
         };
 
         layer_5 {
@@ -220,7 +220,7 @@
 &trans  &trans  &trans  &trans  &trans  &trans       &kp LC(B)                         &skp_down                 &trans  &trans  &trans  &trans  &trans  &trans
                                  &trans  &trans  &trans                                                           &trans  &trans  &trans
             >;
-            sensor-bindings = <&rsr_arrows &scroll_encoder>;
+            sensor-bindings = <&rsr_arrows>;
         };
     };
 };
