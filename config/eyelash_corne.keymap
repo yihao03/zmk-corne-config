@@ -174,7 +174,7 @@
 &trans  &kp N1           &kp N2          &kp N3        &kp N4        &kp N5                                         &mmv MOVE_UP                     &kp N6           &kp N7           &kp N8   &kp N9      &kp N0    &kp BSPC
 &trans  &trans           &trans          &trans        &trans        &trans                         &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT  &kp LEFT         &kp DOWN         &kp UP   &kp RIGHT   &kp HOME  &kp PG_UP
 &trans  &rgb_ug RGB_OFF  &rgb_ug RGB_ON  &trans        &trans        &rgb_ug RGB_EFF  &kp C_PP                      &mmv MOVE_DOWN                   &rgb_ug RGB_EFR  &rgb_ug RGB_SPI  &trans   &trans      &kp END   &kp PG_DN
-                                          &trans        &trans        &trans                                                                          &trans           &trans           &trans
+                                         &trans        &trans        &trans                                                                          &trans           &trans           &trans
             >;
             sensor-bindings = <&rsr_bri>;
         };
@@ -185,7 +185,7 @@
 &trans  &kp EXCL      &kp AT        &kp HASH   &kp DLLR   &kp PRCNT                            &mmv MOVE_UP                     &kp CARET  &kp AMPS   &kp ASTRK  &kp LPAR  &kp RPAR  &kp BSPC
 &trans  &trans        &mkp LCLK     &mkp MCLK  &mkp RCLK  &mkp MB4             &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT  &kp MINUS  &kp EQUAL  &kp LBKT   &kp RBKT  &kp BSLH  &kp GRAVE
 &trans  &out OUT_USB  &out OUT_BLE  &none      &none      &mkp MB5   &tog 4                    &mmv MOVE_DOWN                   &kp UNDER  &kp PLUS   &kp LBRC   &kp RBRC  &kp PIPE  &kp TILDE
-                                     &trans     &trans     &kp RETURN                                                            &trans     &trans     &trans
+                                    &trans     &trans     &kp RETURN                                                            &trans     &trans     &trans
             >;
             sensor-bindings = <&scroll_encoder>;
         };
@@ -204,10 +204,10 @@
         layer_4 {
             display-name = "GAME";
             bindings = <
-&trans      &trans  &trans  &trans     &trans   &trans                              &kp UP                &trans   &trans   &trans   &trans   &trans     &trans
-&kp LSHFT   &kp A   &kp S   &kp D      &kp F    &kp G                     &kp LEFT  &kp ENTER  &kp RIGHT  &kp H    &kp J    &kp K    &kp L    &kp SEMI   &kp SQT
-&trans      &trans  &trans  &trans     &trans   &trans       &kp C_MUTE             &kp DOWN              &trans   &trans   &trans   &trans   &trans     &trans
-                             &kp CAPS   &tog 4   &kp SPACE                                                 &trans   &trans   &trans
+&trans   &trans  &trans  &trans     &trans   &trans                              &kp UP                &trans   &trans   &trans   &trans   &trans     &trans
+&kp ESC  &kp A   &kp S   &kp D      &kp F    &kp G                     &kp LEFT  &kp ENTER  &kp RIGHT  &kp H    &kp J    &kp K    &kp L    &kp SEMI   &kp SQT
+&LSFT    &trans  &trans  &trans     &trans   &trans       &kp C_MUTE             &kp DOWN              &trans   &trans   &trans   &trans   &trans     &trans
+                         &tog 4     &mo 1    &kp SPACE                                                 &trans   &trans   &trans
             >;
             sensor-bindings = <&rsr_vol>;
         };
@@ -218,7 +218,7 @@
 &trans  &trans  &trans  &trans  &trans  &trans                                         &skp_up                   &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans                          &kp LS(UP)     &kp K      &kp LS(DOWN)   &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans       &kp LC(B)                         &skp_down                 &trans  &trans  &trans  &trans  &trans  &trans
-                                 &trans  &trans  &trans                                                           &trans  &trans  &trans
+                                &trans  &trans  &trans                                                           &trans  &trans  &trans
             >;
             sensor-bindings = <&rsr_arrows>;
         };
